@@ -44,8 +44,8 @@ let currentOperation = null;
 let shouldReset = false;
 
 //get references to html elements
-const lastOperationScreen = document.querySelector(".last");
-const currentOperationScreen = document.querySelector(".current");
+const lastOperationScreen = document.getElementById("last");
+const currentOperationScreen = document.getElementById("current");
 const clearButton = document.getElementById("clear");
 const deleteButton = document.getElementById("delete");
 const numberButton = document.querySelectorAll(["data-number"]);
@@ -87,8 +87,8 @@ function evaluate() {
 
 }
 
-function appendNumber() {
-
+function appendNumber(number) {
+    currentOperationScreen.textContent += number;
 }
 
 function setOperation() {
