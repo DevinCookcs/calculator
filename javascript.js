@@ -41,7 +41,7 @@ function operate(x, y, operand) {
 let firstOperand = "";
 let secondOperand = "";
 let currentOperation = null;
-let shouldReset = false;
+
 
 //get references to html elements
 const lastOperationScreen = document.getElementById("last");
@@ -60,19 +60,23 @@ pointButton.addEventListener("click", appendPoint);
 equalsButton.addEventListener("click", evaluate);
 
 numberButton.forEach((button) =>
-    button.addEventListener("click", () => 
+    button.addEventListener("click", () =>
         appendNumber(button.textContent))
 )
 
 operatorButton.forEach((button) =>
-    button.addEventListener("click", () => 
+    button.addEventListener("click", () =>
         setOperation(button.textContent))
 )
 
 
 
 function clear() {
-
+    currentOperationScreen.textContent = null;
+    lastOperationScreen.textContent = null;
+    firstOperand = "";
+    secondOperand = "";
+    currentOperation = null;
 }
 
 function deleteNumber() {
@@ -80,17 +84,27 @@ function deleteNumber() {
 }
 
 function appendPoint() {
-
+    if (currentOperationScreen.textContent.includes(".")){
+        return;
+    }
+    currentOperationScreen.textContent += ".";
 }
 
 function evaluate() {
-
+    secondOperand = currentOperationScreen.textContent;
+    lastOperationScreen.textContent += secondOperand;
+    currentOperationScreen.textContent = ""
+    currentOperationScreen.textContent += operate(firstOperand, secondOperand, currentOperation);
 }
 
 function appendNumber(number) {
     currentOperationScreen.textContent += number;
 }
 
-function setOperation() {
-
+function setOperation(operation) {
+    firstOperand = currentOperationScreen.textContent;
+    currentOperation = operation;
+    currentOperationScreen.textContent += operation;
+    lastOperationScreen.textContent = firstOperand + " " + currentOperation;
+    currentOperationScreen.textContent = "";
 }
