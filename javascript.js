@@ -48,10 +48,10 @@ const lastOperationScreen = document.getElementById("last");
 const currentOperationScreen = document.getElementById("current");
 const clearButton = document.getElementById("clear");
 const deleteButton = document.getElementById("delete");
-const numberButton = document.querySelectorAll(["data-number"]);
-const operatorButton = document.querySelectorAll(["data-operator"]);
 const pointButton = document.getElementById("point-btn");
 const equalsButton = document.getElementById("equals-btn");
+const numberButton = document.querySelectorAll("[data-number]");
+const operatorButton = document.querySelectorAll("[data-operator]");
 
 //add event listeners to elements
 clearButton.addEventListener("click", clear);
