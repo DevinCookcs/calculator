@@ -81,7 +81,7 @@ function clear() {
 }
 
 function deleteNumber() {
-
+    currentOperationScreen.textContent = currentOperationScreen.textContent.toString().slice(0, -1);
 }
 
 function appendPoint() {
