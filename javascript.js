@@ -41,6 +41,7 @@ function operate(x, y, operand) {
 let firstOperand = "";
 let secondOperand = "";
 let currentOperation = null;
+let resetScreenBool = false;
 
 
 //get references to html elements
@@ -72,8 +73,8 @@ operatorButton.forEach((button) =>
 
 
 function clear() {
-    currentOperationScreen.textContent = null;
-    lastOperationScreen.textContent = null;
+    currentOperationScreen.textContent = "";
+    lastOperationScreen.textContent = "";
     firstOperand = "";
     secondOperand = "";
     currentOperation = null;
@@ -84,13 +85,11 @@ function deleteNumber() {
 }
 
 function appendPoint() {
-    if (currentOperationScreen.textContent.includes(".")){
-        return;
-    }
     currentOperationScreen.textContent += ".";
 }
 
 function evaluate() {
+    // if (currentOperation === null || shouldResetScreen) return;
     secondOperand = currentOperationScreen.textContent;
     lastOperationScreen.textContent += secondOperand;
     currentOperationScreen.textContent = ""
@@ -98,6 +97,9 @@ function evaluate() {
 }
 
 function appendNumber(number) {
+    if (currentOperationScreen.textContent === "0" || resetScreenBool) {
+        resetScreen();
+    }
     currentOperationScreen.textContent += number;
 }
 
@@ -107,4 +109,10 @@ function setOperation(operation) {
     currentOperationScreen.textContent += operation;
     lastOperationScreen.textContent = firstOperand + " " + currentOperation;
     currentOperationScreen.textContent = "";
+    resetScreen = true;
+}
+
+function resetScreen() {
+    currentOperationScreen.textContent = "";
+    resetScreen = false;
 }
