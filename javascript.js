@@ -1,21 +1,17 @@
 function add(x, y) {
-    var result = x + y;
-    return result;
+    return x + y;
 }
 
 function subtract(x, y) {
-    var result = x - y;
-    return result;
+    return x - y;
 }
 
 function multiply(x, y) {
-    var result = x * y;
-    return result;
+    return x * y;
 }
 
 function divide(x, y) {
-    var result = x / y;
-    return result;
+    return x / y;
 }
 
 function operate(x, y, operand) {
