@@ -67,7 +67,6 @@ operatorButton.forEach((button) =>
 )
 
 
-
 function clear() {
     currentOperationScreen.textContent = "";
     lastOperationScreen.textContent = "";
@@ -85,7 +84,6 @@ function appendPoint() {
 }
 
 function evaluate() {
-    // if (currentOperation === null || shouldResetScreen) return;
     secondOperand = currentOperationScreen.textContent;
     lastOperationScreen.textContent += secondOperand;
     currentOperationScreen.textContent = ""
